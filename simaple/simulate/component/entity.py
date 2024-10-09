@@ -201,6 +201,26 @@ class Periodic(Entity):
         self.time_left = 0
 
 
+class Schedule(Entity):
+    scheduled_times: list[float]
+    timer: float = 999_999_999
+    index: int = 0
+
+    def start(self):
+        self.timer = 0
+        self.index = len([time for time in self.scheduled_times if time <= 0])
+        return 0, self.index
+
+    def elapse(self, time: float):
+        if self.timer > self.scheduled_times[-1]:
+            return self.index, self.index
+
+        self.timer += time
+        prev_index = self.index
+        self.index = len([time for time in self.scheduled_times if time <= self.timer])
+        return prev_index, self.index
+
+
 class Stack(Entity):
     """
     시간 의존성이 없는 스택.

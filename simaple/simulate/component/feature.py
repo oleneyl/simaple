@@ -9,13 +9,14 @@ from typing import Optional
 import pydantic
 
 
-class DamageAndHit(pydantic.BaseModel):
+class DamageSchedule(pydantic.BaseModel):
     """
     Jointly contains damage and hit.
     """
 
     damage: float
     hit: float
+    time: float
 
 
 class PeriodicFeature(pydantic.BaseModel):
