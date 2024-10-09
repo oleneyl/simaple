@@ -507,130 +507,130 @@ data:
   damage_schedule:
     - damage: "{{ 1020 + skill_level * 34 }}" # 1
       hit: 8
-      time: 0
+      time: 600
     - damage: "{{ 1020 + skill_level * 34 }}" # 2
       hit: 8
-      time: 0
+      time: 1260
     - damage: "{{ 1020 + skill_level * 34 }}" # 3
       hit: 8
-      time: 0
+      time: 780
     - damage: "{{ 1020 + skill_level * 34 }}" # 4
       hit: 8
-      time: 0
+      time: 60
     - damage: "{{ 1020 + skill_level * 34 }}" # 5
       hit: 8
-      time: 0
+      time: 60
     - damage: "{{ 1020 + skill_level * 34 }}" # 6
       hit: 8
-      time: 0
+      time: 60
     - damage: "{{ 1020 + skill_level * 34 }}" # 7
       hit: 8
-      time: 0
+      time: 60
     - damage: "{{ 1020 + skill_level * 34 }}" # 8
       hit: 8
-      time: 0
+      time: 60
     - damage: "{{ 1020 + skill_level * 34 }}" # 9
       hit: 8
-      time: 0
+      time: 60
     - damage: "{{ 1020 + skill_level * 34 }}" # 10
       hit: 8
-      time: 0
+      time: 60
     - damage: "{{ 990 + skill_level * 33 }}" # 1
       hit: 15
-      time: 0
+      time: 660
     - damage: "{{ 990 + skill_level * 33 }}" # 2
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 3
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 4
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 5
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 6
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 7
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 8
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 9
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 10
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 11
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 12
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 13
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 14
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 15
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 16
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 17
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 18
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 19
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 20
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 21
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 22
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 23
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 24
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 25
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 26
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 27
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 28
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 29
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 30
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 31
       hit: 15
-      time: 0
+      time: 30
     - damage: "{{ 990 + skill_level * 33 }}" # 32
       hit: 15
-      time: 0
+      time: 30
 ---
 kind: Component
 version: simaple.io/PeriodicDamageSkillComponent
