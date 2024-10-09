@@ -64,7 +64,7 @@ data:
   lasting_duration: 50_000
 ---
 kind: Component
-version: simaple.io/PeriodicDamageConfiguratedAttackSkillComponent
+version: simaple.io/AttackSkillComponent
 metadata:
   label:
     group: common
@@ -82,9 +82,29 @@ data:
 
   cooldown_duration: 250_000
 
+---
+kind: Component
+version: simaple.io/PeriodicDamageSkillComponent
+metadata:
+  label:
+    group: common
+    name: 크레스트 오브 더 솔라 (불꽃의 문양)
+    id: 400001059-0
+patch:
+  - SkillLevelPatch
+  - ArithmeticPatch
+data:
+  id: 400001059-0
+  name: 크레스트 오브 더 솔라 (불꽃의 문양)
+  listening_actions:
+    - "크레스트 오브 더 솔라.use.emitted.global.delay": use
+
+  delay: 0
+  cooldown_duration: 250_000
+  disable_validity: True
+
   periodic_initial_delay: 2160 # summon.summoned
   periodic_interval: 2100
   periodic_damage: "{{ 275 + 11 * skill_level }}"
   periodic_hit: 6
-
   lasting_duration: 51_000
