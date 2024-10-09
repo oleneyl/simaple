@@ -47,7 +47,7 @@ data:
     critical_rate: "{{ 5 + skill_level // 2 }}"
 ---
 kind: Component
-version: simaple.io/PeriodicDamageConfiguratedAttackSkillComponent
+version: simaple.io/PeriodicDamageSkillComponent
 metadata:
   label:
     group: bishop
@@ -60,9 +60,7 @@ patch:
 data:
   id: 2311014-0
   name: 파운틴 포 엔젤
-  damage: 0
   delay: 600 #?
-  hit: 0
   cooldown_duration: 30_000
 
   periodic_interval: 2_000
