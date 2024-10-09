@@ -367,7 +367,7 @@ data:
   max_count: 20
 ---
 kind: Component
-version: simaple.io/PeriodicDamageConfiguratedAttackSkillComponent
+version: simaple.io/PeriodicDamageSkillComponent
 metadata:
   label:
     group: windbreaker
@@ -379,8 +379,6 @@ patch:
 data:
   id: 400031000-0
   name: 가이디드 애로우
-  damage: 0
-  hit: 0
   delay: 0
   cooldown_duration: 0
 

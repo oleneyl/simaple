@@ -168,7 +168,7 @@ data:
 ---
 # TODO: 최종 폭발
 kind: Component
-version: simaple.io/PeriodicDamageConfiguratedAttackSkillComponent
+version: simaple.io/PeriodicDamageSkillComponent
 metadata:
   label:
     group: adele
@@ -183,8 +183,6 @@ data:
   id: 151111001-0
   name: 테리토리
   delay: 420
-  damage: 0
-  hit: 0
 
   cooldown_duration: 30_000
   red: true
@@ -451,7 +449,7 @@ data:
   default_skill_level: 30
 ---
 kind: Component
-version: simaple.io/PeriodicDamageConfiguratedAttackSkillComponent
+version: simaple.io/PeriodicDamageSkillComponent
 metadata:
   label:
     group: adele
@@ -466,8 +464,6 @@ data:
   name: 인피니트
 
   delay: 540
-  damage: 0
-  hit: 0
 
   cooldown_duration: 180_000
   red: true
@@ -480,7 +476,7 @@ data:
   default_skill_level: 30
 ---
 kind: Component
-version: simaple.io/PeriodicDamageConfiguratedAttackSkillComponent
+version: simaple.io/PeriodicDamageSkillComponent
 metadata:
   label:
     group: adele
@@ -495,8 +491,6 @@ data:
   name: 리스토어
 
   delay: 720
-  damage: 0
-  hit: 0
 
   cooldown_duration: 180_000
   red: true
@@ -566,7 +560,7 @@ data:
   default_skill_level: 30
 ---
 kind: Component
-version: simaple.io/MultipleHitHexaSkillComponent
+version: simaple.io/ScheduledDamageSkillComponent
 metadata:
   label:
     group: adele
@@ -579,11 +573,265 @@ data:
   id: 151141500-0
   name: 마에스트로
 
-  damage_and_hits:
-    - damage: "{{ 680 + skill_level * 23 }}"
-      hit: "{{ 10 * 29 }}"
-    - damage: "{{ 680 + skill_level * 23 }}"
-      hit: "{{ 14 * 57 }}"
+  damage_schedule:
+    - damage: "{{ 680 + skill_level * 23 }}" # 1
+      hit: 10
+      time: 600
+    - damage: "{{ 680 + skill_level * 23 }}" # 2
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 3
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 4
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 5
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 6
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 7
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 8
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 9
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 10
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 11
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 12
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 13
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 14
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 15
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 16
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 17
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 18
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 19
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 20
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 21
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 22
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 23
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 24
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 25
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 26
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 27
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 28
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 29
+      hit: 10
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 1
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 2
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 3
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 4
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 5
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 6
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 7
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 8
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 9
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 10
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 11
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 12
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 13
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 14
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 15
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 16
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 17
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 18
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 19
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 20
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 21
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 22
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 23
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 24
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 25
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 26
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 27
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 28
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 29
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 30
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 31
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 32
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 33
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 34
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 35
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 36
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 37
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 38
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 39
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 40
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 41
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 42
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 43
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 44
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 45
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 46
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 47
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 48
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 49
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 50
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 51
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 52
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 53
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 54
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 55
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 56
+      hit: 14
+      time: 30
+    - damage: "{{ 680 + skill_level * 23 }}" # 57
+      hit: 14
+      time: 30
 
   delay: 7_740
   cooldown_duration: 360_000

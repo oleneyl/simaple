@@ -270,7 +270,7 @@ data:
   apply_buff_duration: False
 ---
 kind: Component
-version: simaple.io/PeriodicDamageConfiguratedAttackSkillComponent
+version: simaple.io/PeriodicDamageSkillComponent
 metadata:
   label:
     group: mechanic
@@ -283,9 +283,7 @@ patch:
 data:
   id: 35121052-0
   name: 디스토션 필드
-  damage: 0
   delay: "{{ apply_attack_speed(900) }}"
-  hit: 0
   cooldown_duration: 8_000
 
   periodic_initial_delay: 690
@@ -490,7 +488,7 @@ data:
   v_improvement: 2
 ---
 kind: Component
-version: simaple.io/PeriodicDamageConfiguratedHexaSkillComponent
+version: simaple.io/ScheduledDamageSkillComponent
 metadata:
   label:
     group: mechanic
@@ -502,16 +500,159 @@ patch:
 data:
   id: 35141500-0
   name: 그라운드 제로
-  damage_and_hits:
-    - damage: "{{ 1020 + skill_level * 34 }}"
-      hit: "{{ 8 * 10 }}"
-    - damage: "{{ 990 + skill_level * 33 }}"
-      hit: "{{ 15 * 32 }}"
 
   delay: 4_860
   cooldown_duration: 360_000
 
-  periodic_initial_delay: 1_200
+  damage_schedule:
+    - damage: "{{ 1020 + skill_level * 34 }}" # 1
+      hit: 8
+      time: 600
+    - damage: "{{ 1020 + skill_level * 34 }}" # 2
+      hit: 8
+      time: 1260
+    - damage: "{{ 1020 + skill_level * 34 }}" # 3
+      hit: 8
+      time: 780
+    - damage: "{{ 1020 + skill_level * 34 }}" # 4
+      hit: 8
+      time: 60
+    - damage: "{{ 1020 + skill_level * 34 }}" # 5
+      hit: 8
+      time: 60
+    - damage: "{{ 1020 + skill_level * 34 }}" # 6
+      hit: 8
+      time: 60
+    - damage: "{{ 1020 + skill_level * 34 }}" # 7
+      hit: 8
+      time: 60
+    - damage: "{{ 1020 + skill_level * 34 }}" # 8
+      hit: 8
+      time: 60
+    - damage: "{{ 1020 + skill_level * 34 }}" # 9
+      hit: 8
+      time: 60
+    - damage: "{{ 1020 + skill_level * 34 }}" # 10
+      hit: 8
+      time: 60
+    - damage: "{{ 990 + skill_level * 33 }}" # 1
+      hit: 15
+      time: 660
+    - damage: "{{ 990 + skill_level * 33 }}" # 2
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 3
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 4
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 5
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 6
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 7
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 8
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 9
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 10
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 11
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 12
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 13
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 14
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 15
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 16
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 17
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 18
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 19
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 20
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 21
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 22
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 23
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 24
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 25
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 26
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 27
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 28
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 29
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 30
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 31
+      hit: 15
+      time: 30
+    - damage: "{{ 990 + skill_level * 33 }}" # 32
+      hit: 15
+      time: 30
+---
+kind: Component
+version: simaple.io/PeriodicDamageSkillComponent
+metadata:
+  label:
+    group: mechanic
+    name: 그라운드 제로 (대규모 폭격)
+    id: 35141500-1
+patch:
+  - SkillLevelPatch
+  - ArithmeticPatch
+data:
+  id: 35141500-1
+  name: 그라운드 제로 (대규모 폭격)
+  listening_actions:
+    "그라운드 제로.use.emitted.global.delay": use
+
+  delay: 0
+  cooldown_duration: 0
+  disable_validity: True
+
+  periodic_initial_delay: 4_860
   periodic_interval: 1_200
   periodic_damage: "{{ 1440 + skill_level * 48 }}" # 툴팁 상으로는 1448 + skill_level * 48이나, 실제 반영되는 값이 다름
   periodic_hit: 15
