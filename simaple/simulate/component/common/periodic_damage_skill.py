@@ -12,13 +12,13 @@ from simaple.simulate.component.view import Running
 from simaple.simulate.global_property import Dynamics
 
 
-class PeriodicWithFinishState(ReducerState):
+class PeriodicDamageSkillState(ReducerState):
     cooldown: Cooldown
     periodic: Periodic
     dynamics: Dynamics
 
 
-class PeriodicWithFinishSkillComponent(
+class PeriodicDamageSkillComponent(
     SkillComponent, UsePeriodicDamageTrait, PeriodicElapseTrait, CooldownValidityTrait
 ):
     name: str
@@ -31,8 +31,8 @@ class PeriodicWithFinishSkillComponent(
     periodic_damage: float
     periodic_hit: float
 
-    finish_damage: float
-    finish_hit: float
+    finish_damage: Optional[float] = None
+    finish_hit: Optional[float] = None
 
     lasting_duration: float
 
@@ -47,10 +47,17 @@ class PeriodicWithFinishSkillComponent(
         }
 
     @reducer_method
-    def elapse(self, time: float, state: PeriodicWithFinishState):
+    def elapse(self, time: float, state: PeriodicDamageSkillState):
         was_running = state.periodic.enabled()
         state, events = self.elapse_periodic_damage_trait(time, state)
-        if not state.periodic.enabled() and was_running:
+        is_running = state.periodic.enabled()
+
+        if (
+            self.finish_hit is not None
+            and self.finish_damage is not None
+            and was_running
+            and not is_running
+        ):
             events.append(
                 self.event_provider.dealt(self.finish_damage, self.finish_hit)
             )
@@ -58,15 +65,15 @@ class PeriodicWithFinishSkillComponent(
         return state, events
 
     @reducer_method
-    def use(self, _: None, state: PeriodicWithFinishState):
+    def use(self, _: None, state: PeriodicDamageSkillState):
         return self.use_periodic_damage_trait(state)
 
     @view_method
-    def validity(self, state: PeriodicWithFinishState):
+    def validity(self, state: PeriodicDamageSkillState):
         return self.validity_in_cooldown_trait(state)
 
     @view_method
-    def running(self, state: PeriodicWithFinishState) -> Running:
+    def running(self, state: PeriodicDamageSkillState) -> Running:
         return Running(
             id=self.id,
             name=self.name,
@@ -74,10 +81,10 @@ class PeriodicWithFinishSkillComponent(
             lasting_duration=self._get_lasting_duration(state),
         )
 
-    def _get_lasting_duration(self, state: PeriodicWithFinishState) -> float:
+    def _get_lasting_duration(self, state: PeriodicDamageSkillState) -> float:
         return self.lasting_duration
 
     def _get_periodic_damage_hit(
-        self, state: PeriodicWithFinishState
+        self, state: PeriodicDamageSkillState
     ) -> tuple[float, float]:
         return self.periodic_damage, self.periodic_hit
