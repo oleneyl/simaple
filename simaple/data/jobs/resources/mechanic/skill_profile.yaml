@@ -28,6 +28,7 @@ data:
     - "멀티플 옵션: M-FL"
   hexa_skill_names:
     - 그라운드 제로
+    - 그라운드 제로 (대규모 폭격)
   hexa_mastery:
     "매시브 파이어: IRON-B": "매시브 파이어: IRON-B VI"
     "매시브 파이어: IRON-B (폭발)": "매시브 파이어: IRON-B VI (폭발)"

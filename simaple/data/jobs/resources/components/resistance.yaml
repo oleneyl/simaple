@@ -16,7 +16,7 @@ data:
     damage_multiplier: 10
 ---
 kind: Component
-version: simaple.io/PeriodicDamageConfiguratedAttackSkillComponent
+version: simaple.io/PeriodicDamageSkillComponent
 metadata:
   label:
     group: resistance
@@ -28,9 +28,7 @@ patch:
 data:
   id: 400001019-0
   name: 레지스탕스 라인 인팬트리
-  damage: 0
   delay: 360
-  hit: 0
   cooldown_duration: 25_000
 
   periodic_initial_delay: 1_770 # 1350(summon.summoned) + 420(summon.attack1.attackAfter)
