@@ -252,7 +252,7 @@ data:
   lasting_duration: 15_000
 ---
 kind: Component
-version: simaple.io/PeriodicWithFinishSkillComponent
+version: simaple.io/PeriodicDamageSkillComponent
 metadata:
   label:
     group: soulmaster
