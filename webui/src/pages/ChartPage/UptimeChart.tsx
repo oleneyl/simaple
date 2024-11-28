@@ -25,6 +25,7 @@ import {
 } from "../../components/ui/card";
 import { Checkbox } from "../../components/ui/checkbox";
 import { Label } from "../../components/ui/label";
+import { useSkillData } from "@/hooks/useSkillData";
 
 echarts.use([
   TooltipComponent,
@@ -44,7 +45,10 @@ type ECOption = echarts.ComposeOption<
 export function useChart(
   history: PlayLogResponse[],
   skillNames: string[],
+  trackingSkillNames: string[],
 ): ECOption {
+  const { getIconPath } = useSkillData();
+
   const clock = history.length > 0 ? history[history.length - 1].clock : 0;
 
   function getUptimeSeries(history: PlayLogResponse[]) {
@@ -72,6 +76,16 @@ export function useChart(
         }));
     });
 
+    const trackingSkillClocks = trackingSkillNames.flatMap((name) =>
+      history
+        .filter((log) =>
+          log.events.find(
+            (event) => event.name === name && event.method === "use",
+          ),
+        )
+        .map((log) => ({ name: name, clock: log.clock })),
+    );
+
     return {
       data,
       renderItem: renderUptime,
@@ -83,7 +97,7 @@ export function useChart(
       markLine: {
         silent: true,
         animation: true,
-        symbol: "none",
+        animationDuration: 200,
         label: {
           show: false,
         },
@@ -92,9 +106,12 @@ export function useChart(
           color: "#bcbcbc",
         },
         data: [
-          {
+          ...trackingSkillClocks.map(({ name, clock }) => ({
+            symbol: `image://${getIconPath(name)}`,
+            symbolSize: 24,
+            symbolRotate: 0,
             xAxis: clock,
-          },
+          })),
         ],
       },
     } satisfies CustomSeriesOption;
@@ -168,28 +185,38 @@ export function useChart(
 }
 
 const UptimeChart: React.FC = () => {
-  const { history: logs, unfilteredHistory: unfilteredLogs } = useWorkspace();
+  const {
+    history: logs,
+    unfilteredHistory: unfilteredLogs,
+    usedSkillNames,
+  } = useWorkspace();
   const runningView = logs[0]?.running_view;
-  const skillNames = useMemo(
+  const runningSkillNames = useMemo(
     () => (runningView ? Object.keys(runningView) : []),
     [runningView],
   );
-  const usedSkillNames = useMemo(
+  const usedRunningSkillNames = useMemo(
     () =>
-      skillNames.filter((name) =>
+      runningSkillNames.filter((name) =>
         unfilteredLogs.some((log) =>
           log.events.find(
             (event) => event.name === name && event.method === "use",
           ),
         ),
       ),
-    [skillNames, unfilteredLogs],
+    [runningSkillNames, unfilteredLogs],
   );
-  const [selectedSkillNames, setSelectedSkillNames] = React.useState<string[]>(
+  const [selectedRunningSkillNames, setSelectedRunningSkillNames] =
+    React.useState<string[]>([]);
+  const [trackingSkillNames, setTrackingSkillNames] = React.useState<string[]>(
     [],
   );
 
-  const options = useChart(unfilteredLogs, selectedSkillNames);
+  const options = useChart(
+    unfilteredLogs,
+    selectedRunningSkillNames,
+    trackingSkillNames,
+  );
 
   return (
     <Card className="max-w-[1200px]">
@@ -206,23 +233,23 @@ const UptimeChart: React.FC = () => {
       <CardFooter className="flex-col items-start gap-2 text-sm">
         <Label>스킬</Label>
         <div className="flex flex-wrap gap-4">
-          {usedSkillNames.map((skillName, i) => (
+          {usedRunningSkillNames.map((skillName, i) => (
             <div key={skillName} className="flex gap-1 items-center">
               <Checkbox
                 id={`runningView.skillNames.${i}`}
                 key={skillName}
-                checked={selectedSkillNames.includes(skillName)}
+                checked={selectedRunningSkillNames.includes(skillName)}
                 onCheckedChange={
-                  selectedSkillNames.includes(skillName)
+                  selectedRunningSkillNames.includes(skillName)
                     ? () =>
-                        setSelectedSkillNames(
-                          selectedSkillNames.filter(
+                        setSelectedRunningSkillNames(
+                          selectedRunningSkillNames.filter(
                             (name) => name !== skillName,
                           ),
                         )
                     : () =>
-                        setSelectedSkillNames([
-                          ...selectedSkillNames,
+                        setSelectedRunningSkillNames([
+                          ...selectedRunningSkillNames,
                           skillName,
                         ])
                 }
@@ -235,17 +262,44 @@ const UptimeChart: React.FC = () => {
           <Button
             variant="secondary"
             size="sm"
-            onClick={() => setSelectedSkillNames(usedSkillNames)}
+            onClick={() => setSelectedRunningSkillNames(usedRunningSkillNames)}
           >
             전체 선택
           </Button>
           <Button
             variant="secondary"
             size="sm"
-            onClick={() => setSelectedSkillNames([])}
+            onClick={() => setSelectedRunningSkillNames([])}
           >
             전체 해제
           </Button>
+        </div>
+        <Label>스킬</Label>
+        <div className="flex flex-wrap gap-4">
+          {usedSkillNames.map((skillName, i) => (
+            <div key={skillName} className="flex gap-1 items-center">
+              <Checkbox
+                id={`tracking.skillNames.${i}`}
+                key={skillName}
+                checked={trackingSkillNames.includes(skillName)}
+                onCheckedChange={
+                  trackingSkillNames.includes(skillName)
+                    ? () =>
+                        setTrackingSkillNames(
+                          trackingSkillNames.filter(
+                            (name) => name !== skillName,
+                          ),
+                        )
+                    : () =>
+                        setTrackingSkillNames([
+                          ...trackingSkillNames,
+                          skillName,
+                        ])
+                }
+              />
+              <Label htmlFor={`tracking.skillNames.${i}`}>{skillName}</Label>
+            </div>
+          ))}
         </div>
       </CardFooter>
     </Card>
